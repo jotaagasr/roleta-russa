@@ -1,28 +1,44 @@
 import random
-import time
+from time import sleep
 
 def roleta_russa():
-    print("roleta russa")
-    balas = [0, 0, 0, 0, 0, 1]  # 1 = bala, 0 = vazio
-    random.shuffle(balas)
+    while True:
+        try:
+            print("\n🎯 Roleta Russa")
 
-    input("Aperte ENTER pra girar o tambor...")
-    time.sleep(0.5)
-    print("Girando o tambor...")
-    time.sleep(0.5)
+            balas = [0, 0, 0, 0, 0, 1]  # 1 = bala, 0 = vazio
+            random.shuffle(balas)
 
-    input("Aperte ENTER pra puxar o gatilho...")
-    time.sleep(0.5)
+            input("Aperte ENTER pra girar o tambor...")
+            
+            sleep(1)
+            print("Girando o tambor...")
+            sleep(1)
 
-    if balas.pop() == 1:
-        print("BANG!")
-        print("SE FUDEU MORREU")
-    else:
-        print("*click*")
-        print("Segue a vida, por enquanto...")
+            input("Aperte ENTER pra puxar o gatilho...")
+            sleep(1)
 
-    print("\nFim da rodada.")
-    input("Pressione ENTER para jogar novamente...")
-    roleta_russa() 
+            if balas.pop() == 1:
+                print("💥 BANG!")
+                print("Você perdeu.")
+            else:
+                print("*click*")
+                print("Segue a vida, por enquanto...")
+
+            print("\nFim da rodada.")
+            finalizando = input(
+                "Pressione P para jogar novamente ou S para sair: "
+            ).strip().upper()
+
+            if finalizando == "S":
+                print("Encerrando o jogo...")
+                break
+
+        except Exception as erro:
+            print("Ocorreu um erro:", erro)
+
+# Inicia o jogo
+roleta_russa()
 # Executar o jogo
+
 roleta_russa()
